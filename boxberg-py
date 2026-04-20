@@ -1,0 +1,200 @@
+import math
+import random
+
+
+def ggt_rest(m, n):
+    m = abs(m)
+    n = abs(n)
+
+    while n != 0:
+        r = m % n
+        m = n
+        n = r
+
+    return m
+
+
+def ggt_rest_interaktiv():
+    m = int(input("m: "))
+    n = int(input("n: "))
+    print("ggT =", ggt_rest(m, n))
+
+
+def ggt_subtraktion(m, n):
+    m = abs(m)
+    n = abs(n)
+
+    if m == 0:
+        return n
+    if n == 0:
+        return m
+
+    while m != n:
+        if m > n:
+            m = m - n
+        else:
+            n = n - m
+
+    return m
+
+
+def ggt_subtraktion_interaktiv():
+    m = int(input("m: "))
+    n = int(input("n: "))
+    print("ggT =", ggt_subtraktion(m, n))
+
+
+def zahlenpyramide(n):
+    for i in range(1, n + 1):
+        print(str(i) * (2 * i - 1))
+
+
+def zahlenpyramide_interaktiv():
+    n = int(input("Zahl von 4 bis 9: "))
+
+    if 4 <= n <= 9:
+        zahlenpyramide(n)
+    else:
+        print("Fehler: Zahl muss zwischen 4 und 9 liegen.")
+
+
+def ist_schaltjahr(jahr):
+    if jahr % 400 == 0:
+        return True
+    if jahr % 100 == 0:
+        return False
+    if jahr % 4 == 0:
+        return True
+    return False
+
+
+def schaltjahr_interaktiv():
+    jahr = int(input("Jahr: "))
+
+    if ist_schaltjahr(jahr):
+        print("Schaltjahr")
+    else:
+        print("Kein Schaltjahr")
+
+
+def ist_metropole(einwohner, hauptstadt, steuern):
+    if hauptstadt and einwohner > 100000:
+        return True
+    if einwohner > 200000 and steuern > 1000000:
+        return True
+    return False
+
+
+def metropole_interaktiv():
+    stadt = input("Stadt: ")
+    einwohner = int(input("Einwohnerzahl: "))
+    hauptstadt_text = input("Hauptstadt (ja/nein): ").lower()
+    steuern = int(input("Steuereinnahmen: "))
+
+    hauptstadt = hauptstadt_text == "ja"
+
+    if ist_metropole(einwohner, hauptstadt, steuern):
+        print(stadt, "ist eine Metropole.")
+    else:
+        print(stadt, "ist keine Metropole.")
+
+
+def euler_approximation(n):
+    e = 0
+
+    for i in range(n):
+        e = e + 1 / math.factorial(i)
+
+    return e
+
+
+def euler_interaktiv():
+    n = int(input("n: "))
+    print("Approximation von e =", euler_approximation(n))
+
+
+def nullstellen_berechnen(a, b, c):
+    if a == 0:
+        if b == 0:
+            if c == 0:
+                return "Unendlich viele Lösungen"
+            return "Keine Lösung"
+        x = -c / b
+        return f"Eine Lösung: x = {x}"
+
+    d = b**2 - 4*a*c
+
+    if d < 0:
+        return "Keine reellen Lösungen"
+    elif d == 0:
+        x = -b / (2*a)
+        return f"Eine doppelte Lösung: x = {x}"
+    else:
+        x1 = (-b + math.sqrt(d)) / (2*a)
+        x2 = (-b - math.sqrt(d)) / (2*a)
+        return f"Zwei Lösungen: x1 = {x1}, x2 = {x2}"
+
+
+def nullstellen_interaktiv():
+    a = float(input("a: "))
+    b = float(input("b: "))
+    c = float(input("c: "))
+
+    print(nullstellen_berechnen(a, b, c))
+
+
+def zahlenraten():
+    geheimzahl = random.randint(0, 99)
+    versuche = 0
+    geraten = False
+
+    print("Ich habe mir eine Zahl zwischen 0 und 99 ausgedacht.")
+
+    while not geraten:
+        tipp = int(input("Dein Tipp: "))
+        versuche = versuche + 1
+
+        if tipp < geheimzahl:
+            print("Meine Zahl ist größer.")
+        elif tipp > geheimzahl:
+            print("Meine Zahl ist kleiner.")
+        else:
+            geraten = True
+
+    print("Richtig!")
+    print("Versuche:", versuche)
+
+
+def menue():
+    print("1 - ggT mit Restverfahren")
+    print("2 - ggT mit Subtraktion")
+    print("3 - Zahlenpyramide")
+    print("4 - Schaltjahr")
+    print("5 - Metropole")
+    print("6 - Euler-Approximation")
+    print("7 - Nullstellen berechnen")
+    print("8 - Zahlenraten")
+
+    wahl = input("Auswahl: ")
+
+    if wahl == "1":
+        ggt_rest_interaktiv()
+    elif wahl == "2":
+        ggt_subtraktion_interaktiv()
+    elif wahl == "3":
+        zahlenpyramide_interaktiv()
+    elif wahl == "4":
+        schaltjahr_interaktiv()
+    elif wahl == "5":
+        metropole_interaktiv()
+    elif wahl == "6":
+        euler_interaktiv()
+    elif wahl == "7":
+        nullstellen_interaktiv()
+    elif wahl == "8":
+        zahlenraten()
+    else:
+        print("Ungültige Auswahl")
+
+
+menue()
