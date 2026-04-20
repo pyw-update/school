@@ -1,3 +1,5 @@
+IDE -> Integrated Developer Environment
+
 (Start)
    ↓
 [m,n deklarieren]
@@ -14,6 +16,7 @@
      ↓
  zurück zur Bedingung
 
+NSD - while wird mit dem punkt als punkt A "goto" verwendet dann dieser kasten mit der ecke oben als abfrage und wenn nicht dann zu A
 
 DIN 66001 – PAP-SYMBOLE ALS COPY-PASTE-VORLAGE
 
@@ -415,3 +418,173 @@ WHILE
 │ │ Ausgabe: print("Fertig")                                │ │                        │
 │ └─────────────────────────────────────────────────────────┘ │                        │
 └─────────────────────────────────────────────────────────────┴────────────────────────┘
+
+
+kurze notizen datentypen + operatoren + kontrolle
+
+bits und bytes
+1 bit = 0 oder 1
+8 bit = 1 byte
+1 byte = 256 mögliche werte
+
+java datentypen
+byte    = 8 bit      = -128 bis 127
+short   = 16 bit     = -32768 bis 32767
+int     = 32 bit
+long    = 64 bit
+float   = 32 bit     = gleitkommazahl
+double  = 64 bit     = gleitkommazahl
+char    = 16 bit     = einzelnes zeichen
+boolean = true/false
+void    = kein rückgabewert
+
+python datentypen
+int     = ganze zahl         beispiel: 42
+float   = kommazahl          beispiel: 34.6
+bool    = wahr/falsch        beispiel: True / False
+str     = text               beispiel: "Text"
+
+wichtig
+bei python:
+input() gibt erst mal text zurück
+für zahlen oft:
+zahl = int(input("Zahl: "))
+
+variablen
+x = 5
+preis = 3.5
+name = "Ali"
+fertig = True
+
+operatoren
+=    zuweisung
+==   gleich
+!=   ungleich
+>    größer
+<    kleiner
+>=   größer gleich
+<=   kleiner gleich
++    plus / bei text: zusammenfügen
+-    minus
+*    mal
+/    division mit komma
+//   ganzzahlige division
+%    rest
+**   potenz
+
+beispiele
+m = 5
+n = 2
+
+m + n   = 7
+m - n   = 3
+m * n   = 10
+m / n   = 2.5
+m // n  = 2
+m % n   = 1
+m ** n  = 25
+
+if else
+if x > 0:
+    print("positiv")
+else:
+    print("nicht positiv")
+
+if elif else
+if x > 0:
+    print("positiv")
+elif x < 0:
+    print("negativ")
+else:
+    print("null")
+
+while
+i = 1
+while i <= 5:
+    print(i)
+    i = i + 1
+
+for
+for i in range(5):
+    print(i)
+
+funktion
+def hallo():
+    print("Hallo")
+
+funktion mit return
+def addieren(a, b):
+    return a + b
+
+try except finally
+try:
+    zahl = int(input("Zahl: "))
+    ergebnis = 10 / zahl
+    print(ergebnis)
+except ValueError:
+    print("falsche eingabe")
+except ZeroDivisionError:
+    print("nicht durch 0 teilen")
+finally:
+    print("ende")
+
+liste
+namen = ["Ali", "Tom", "Lisa"]
+print(namen[0])
+
+for name in namen:
+    print(name)
+
+pap
+start / ende     = grenzstelle
+rechteck         = anweisung
+parallelogramm   = eingabe / ausgabe
+raute            = bedingung
+kreis            = marke
+pfeil            = ablauf
+
+nsd
+nur rechtecke
+keine pfeile
+keine marke
+ja / nein nebeneinander
+alles verschachtelt
+
+ggt mit rest
+m = int(input("m: "))
+n = int(input("n: "))
+
+r = m % n
+
+
+
+while r > 0:
+    m = n
+    n = r
+    r = m % n
+
+print(n)
+
+ggt mit subtraktion
+m = int(input("m: "))
+n = int(input("n: "))
+
+while m != n:
+    if m > n:
+        m = m - n
+    else:
+        n = n - m
+
+print(m)
+
+häufige fehler
+if x = 5:        falsch
+if x == 5:       richtig
+
+3,5              falsch
+3.5              richtig
+
+Text             falsch
+"Text"           richtig
+
+True / False     groß schreiben
